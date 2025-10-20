@@ -1,0 +1,10 @@
+// Protobuf контракт
+
+// Версия синтаксиса Protobuf
+syntax = "proto3";
+
+// Название пакета для генерации кода
+package catalog;
+
+// Опции для Go
+option go-package = "github.com/lizarooz/vintage-jazz-shop/api/proto/catalog"

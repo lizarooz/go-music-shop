@@ -1,0 +1,23 @@
+vintage-jazz-shop/
+├── cmd/
+│   └── api/
+│       └── main.go
+├── internal/
+│   ├── config/ +
+│   ├── domain/ +
+│   ├── handlers/ +
+│   ├── repository/ +
+│   ├── service/ +
+│   └── models/
+├── pkg/
+│   ├── database/ +
+│   ├── logger/
+│   └── utils/
+├── api/
+│   └── proto/
+├── deployments/
+│   └── docker-compose.yml
+├── scripts/
+│   └── migrations/ +
+├── tests/
+└── Makefile
