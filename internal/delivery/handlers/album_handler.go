@@ -2,7 +2,7 @@
 package handlers
 
 import (
-	"go-music-shop/internal/domain"
+	"go-music-shop/internal/domain/models"
 	"go-music-shop/internal/service"
 	"net/http"
 

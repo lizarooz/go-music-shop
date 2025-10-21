@@ -5,7 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"go-music-shop/internal/domain"
+	"go-music-shop/internal/domain/models"
 	"go-music-shop/pkg/redis"
 	"log"
 	"time"

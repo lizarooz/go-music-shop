@@ -3,7 +3,7 @@ package catalog
 import (
 	"context"
 	"fmt"
-	"go-music-shop/internal/domain"
+	"go-music-shop/internal/domain/models"
 	"go-music-shop/internal/service"
 	"log"
 	"time"

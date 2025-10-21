@@ -3,7 +3,7 @@ package main
 import (
 	"database/sql"
 	"go-music-shop/internal/config"
-	"go-music-shop/internal/handlers"
+	"go-music-shop/internal/delivery/handlers"
 	"go-music-shop/internal/repository"
 	"go-music-shop/internal/service"
 	"go-music-shop/pkg/database"
