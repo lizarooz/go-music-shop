@@ -1,23 +1,76 @@
 vintage-jazz-shop/
 ├── cmd/
-│   └── api/
+│   ├── api/
+│   │   └── main.go
+│   └── catalog-service/
 │       └── main.go
 ├── internal/
-│   ├── config/ +
-│   ├── domain/ +
-│   ├── handlers/ +
-│   ├── repository/ +
-│   ├── service/ +
-│   └── models/
+│   ├── config/
+│   ├── domain/           # ✅ Сущности и интерфейсы
+│   ├── usecase/          # ✅ Бизнес-логика
+│   ├── delivery/         # ✅ Delivery layer
+│   │   ├── http/         # HTTP handlers
+│   │   └── grpc/         # gRPC handlers
+│   └── repository/       # ✅ Data access
 ├── pkg/
-│   ├── database/ +
-│   ├── logger/
-│   └── utils/
-├── api/
-│   └── proto/
-├── deployments/
-│   └── docker-compose.yml
-├── scripts/
-│   └── migrations/ +
-├── tests/
-└── Makefile
+└── deployments/
+
+
+D:\GOPROJECTS\GO-MUSIC-SHOP
+│   arch.txt
+│   Dockerfile
+│   Dockerfile.catalog
+│   go.mod
+│   go.sum
+│
+├───cmd
+│   │   main.go
+│   │
+│   ├───api
+│   │   │   main.go
+│   │   │
+│   │   └───proto
+│   │           catalog.proto
+│   │
+│   └───catalog-service
+├───deployments
+│       docker-compose.yml
+│
+├───internal
+│   ├───catalog
+│   │       service.go
+│   │
+│   ├───config
+│   │       config.go
+│   │
+│   ├───domain
+│   │       album.go
+│   │
+│   ├───handlers
+│   │       album_handler.go
+│   │
+│   ├───repository
+│   │       album_repository.go
+│   │       cached_album_repository.go
+│   │       postgres_album_repository.go
+│   │
+│   └───service
+│           album_service.go
+│
+├───pkg
+│   ├───database
+│   │       postgres.go
+│   │
+│   ├───gen
+│   │   └───catalog
+│   │           catalog.pb.go
+│   │           catalog_grpc.pb.go
+│   │
+│   └───redis
+│           redis_client.go
+│
+└───scripts
+    │   generate-proto.sh
+    │
+    └───migrations
+            001_create_albums_table.up.sql

@@ -7,4 +7,129 @@ syntax = "proto3";
 package catalog;
 
 // Опции для Go
-option go-package = "github.com/lizarooz/vintage-jazz-shop/api/proto/catalog"
+option go_package = "go-music-shop/api/proto/catalog";
+
+service CatalogService {
+	// Получить все альбомы
+	rpc GetAlbums(GetAlbumsRequest) returns (GetAlbumsResponse);
+
+	// Получить альбом по ID
+	rpc GetAlbumByID(GetAlbumByIDRequest) returns (GetAlbumByIDResponse);
+
+	// Создать новый альбом
+	rpc CreateAlbum(CreateAlbumRequest) returns (CreateAlbumResponse);
+
+	// Обновить альбом
+	rpc UpdateAlbum(UpdateAlbumRequest) returns (UpdateAlbumResponse);
+
+	// Удалить альбом
+	rpc DeleteAlbum(DeleteAlbumRequest) returns (DeleteAlbumResponse);
+
+	// Поиск альбома по исполнителю 
+	rpc SearchAlbumsByArtist(SearchAlbumsByArtistRequest) returns (SearchAlbumsByArtistResponse);
+
+	// Получить альбомы в наличии 
+	rpc GetAlbumsInStock(GetAlbumsInStockRequest) returns (GetAlbumsInStockResponse);
+}
+
+// Сообщение для запроса всех альбомов
+
+message GetAlbumsRequest {
+	int32 limit = 1;	// Ограничение количества результатов
+	int32 offset = 2;   // Смещение для пагинации
+}
+
+// Сообщение для ответа со списком альбомов
+message GetAlbumsResponse {
+  repeated Album albums = 1;  // Список альбомов
+  int32 total_count = 2;      // Общее количество альбомов
+}
+
+// Сообщение для запроса альбома по ID
+message GetAlbumByIDRequest {
+  string id = 1;  // ID альбома
+}
+
+// Сообщение для ответа с одним альбомом
+message GetAlbumByIDResponse {
+  Album album = 1;  // Найденный альбом
+}
+
+// Сообщение для запроса создания альбома
+message CreateAlbumRequest {
+  string title = 1;      // Название альбома
+  string artist = 2;     // Исполнитель
+  double price = 3;      // Цена
+  int32 year = 4;        // Год выпуска
+  string genre = 5;      // Жанр
+  string condition = 6;  // Состояние (mint, very good, good, fair, poor)
+  bool in_stock = 7;     // В наличии
+}
+
+// Сообщение для ответа после создания альбома
+message CreateAlbumResponse {
+  Album album = 1;  // Созданный альбом
+}
+
+// Сообщение для запроса обновления альбома
+message UpdateAlbumRequest {
+  string id = 1;        // ID альбома
+  string title = 2;     // Новое название
+  string artist = 3;    // Новый исполнитель
+  double price = 4;     // Новая цена
+  int32 year = 5;       // Новый год
+  string genre = 6;     // Новый жанр
+  string condition = 7; // Новое состояние
+  bool in_stock = 8;    // Новый статус наличия
+}
+
+// Сообщение для ответа после обновления альбома
+message UpdateAlbumResponse {
+  Album album = 1;  // Обновленный альбом
+}
+
+// Сообщение для запроса удаления альбома
+message DeleteAlbumRequest {
+  string id = 1;  // ID альбома для удаления
+}
+
+// Сообщение для ответа после удаления альбома
+message DeleteAlbumResponse {
+  bool success = 1;  // Флаг успешного удаления
+  string message = 2; // Сообщение
+}
+
+// Сообщение для поиска альбомов по исполнителю
+message SearchAlbumsByArtistRequest {
+  string artist = 1;  // Имя исполнителя
+  int32 limit = 2;    // Ограничение количества
+}
+
+// Сообщение для ответа с альбомами исполнителя
+message SearchAlbumsByArtistResponse {
+  repeated Album albums = 1;  // Список альбомов
+}
+
+// Сообщение для запроса альбомов в наличии
+message GetAlbumsInStockRequest {
+  int32 limit = 1;   // Ограничение количества
+}
+
+// Сообщение для ответа с альбомами в наличии
+message GetAlbumsInStockResponse {
+  repeated Album albums = 1;  // Список альбомов в наличии
+}
+
+// Основное сообщение Альбом
+message Album {
+  string id = 1;           // Уникальный идентификатор
+  string title = 2;        // Название альбома
+  string artist = 3;       // Исполнитель
+  double price = 4;        // Цена
+  int32 year = 5;         // Год выпуска
+  string genre = 6;       // Жанр
+  string condition = 7;   // Состояние пластинки
+  bool in_stock = 8;      // В наличии
+  string created_at = 9;  // Дата создания (строка для простоты)
+  string updated_at = 10; // Дата обновления
+}
