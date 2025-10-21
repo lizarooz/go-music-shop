@@ -1,76 +1,45 @@
-vintage-jazz-shop/
+go-music-shop/
+├── api/
+│   └── proto/
+│       └── catalog.proto
 ├── cmd/
-│   ├── api/
+│   ├── api-gateway/
 │   │   └── main.go
 │   └── catalog-service/
 │       └── main.go
+├── config/
+│   └── config.go
+├── deployments/
+│   └── docker-compose.yml
 ├── internal/
-│   ├── config/
-│   ├── domain/           # ✅ Сущности и интерфейсы
-│   ├── usecase/          # ✅ Бизнес-логика
-│   ├── delivery/         # ✅ Delivery layer
-│   │   ├── http/         # HTTP handlers
-│   │   └── grpc/         # gRPC handlers
-│   └── repository/       # ✅ Data access
-├── pkg/
-└── deployments/
-
-
-D:\GOPROJECTS\GO-MUSIC-SHOP
-│   arch.txt
-│   Dockerfile
-│   Dockerfile.catalog
-│   go.mod
-│   go.sum
-│
-├───cmd
-│   │   main.go
-│   │
-│   ├───api
-│   │   │   main.go
-│   │   │
-│   │   └───proto
-│   │           catalog.proto
-│   │
-│   └───catalog-service
-├───deployments
-│       docker-compose.yml
-│
-├───internal
-│   ├───catalog
-│   │       service.go
-│   │
-│   ├───config
-│   │       config.go
-│   │
-│   ├───domain
-│   │       album.go
-│   │
-│   ├───handlers
-│   │       album_handler.go
-│   │
-│   ├───repository
-│   │       album_repository.go
-│   │       cached_album_repository.go
-│   │       postgres_album_repository.go
-│   │
-│   └───service
-│           album_service.go
-│
-├───pkg
-│   ├───database
-│   │       postgres.go
-│   │
-│   ├───gen
-│   │   └───catalog
-│   │           catalog.pb.go
-│   │           catalog_grpc.pb.go
-│   │
-│   └───redis
-│           redis_client.go
-│
-└───scripts
-    │   generate-proto.sh
-    │
-    └───migrations
-            001_create_albums_table.up.sql
+│   ├── app/
+│   │   ├── app.go
+│   │   └── grpc/
+│   │       └── app.go
+│   ├── config/           # (пустая или удалить)
+│   ├── domain/
+│   │   ├── models/
+│   │   │   └── album.go
+│   │   └── repository.go
+│   ├── grpc/
+│   │   └── catalog/
+│   │       └── handler.go
+│   ├── http/
+│   │   └── album/
+│   │       └── handler.go
+│   ├── lib/
+│   │   ├── database/
+│   │   │   └── postgres.go
+│   │   └── redis/
+│   │       └── redis_client.go
+│   ├── services/
+│   │   └── album.go
+│   └── storage/
+│       ├── postgres/
+│       │   └── album.go
+│       └── redis/
+│           └── cache.go
+├── migrations/
+│   └── 001_create_albums_table.up.sql
+└── scripts/
+    └── generate-proto.sh

@@ -3,7 +3,7 @@ package repository
 
 import (
 	"fmt"
-	"go-music-shop/internal/domain"
+	"go-music-shop/internal/domain/models"
 	"sync"
 	"time"
 

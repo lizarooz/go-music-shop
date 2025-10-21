@@ -3,7 +3,7 @@ package service
 
 import (
 	"fmt"
-	"go-music-shop/internal/domain"
+	"go-music-shop/internal/domain/models"
 )
 
 // AlbumService - сервис для работы с альбомами

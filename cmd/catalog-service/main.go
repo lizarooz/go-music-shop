@@ -1,7 +1,7 @@
 package main
 
 import (
-	"go-music-shop/internal/catalog"
+	"go-music-shop/internal/delivery/catalog"
 	"go-music-shop/internal/config"
 	"go-music-shop/internal/repository"
 	"go-music-shop/internal/service"

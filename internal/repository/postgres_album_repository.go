@@ -4,7 +4,7 @@ package repository
 import (
 	"database/sql"
 	"fmt"
-	"go-music-shop/internal/domain"
+	"go-music-shop/internal/domain/models"
 	"log"
 	"time"
 )
